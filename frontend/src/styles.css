@@ -1,0 +1,339 @@
+:root {
+  color: #172026;
+  background: #f6f8f8;
+  font-family: Inter, "Microsoft YaHei", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+main {
+  min-height: 100vh;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: end;
+  padding: 48px clamp(20px, 5vw, 72px) 32px;
+  background: linear-gradient(135deg, #fdfefe 0%, #edf5f7 45%, #f8ecec 100%);
+  border-bottom: 1px solid #dde6e6;
+}
+
+.eyebrow,
+.badges span,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #50636a;
+  font-size: 13px;
+}
+
+h1 {
+  margin: 12px 0 10px;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 620px;
+  color: #5b6b70;
+  font-size: 17px;
+}
+
+.statusBox,
+.panel,
+.widePanel,
+.previewPanel,
+.logPanel,
+.jsonPanel {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid #dfe8e8;
+  border-radius: 8px;
+}
+
+.statusBox {
+  padding: 18px;
+}
+
+.progress {
+  height: 10px;
+  background: #e8eeee;
+  border-radius: 999px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: #ff6f61;
+}
+
+.workflow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  padding: 24px clamp(20px, 5vw, 72px);
+}
+
+.panel,
+.widePanel,
+.previewPanel,
+.logPanel,
+.jsonPanel {
+  padding: 18px;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.panelHeader:first-child {
+  justify-content: flex-start;
+}
+
+.dropzone {
+  display: grid;
+  place-items: center;
+  min-height: 116px;
+  border: 1px dashed #a8b9bd;
+  border-radius: 8px;
+  color: #50636a;
+  cursor: pointer;
+}
+
+.dropzone input {
+  display: none;
+}
+
+.fileList {
+  margin-top: 12px;
+  min-height: 54px;
+}
+
+.fileList p,
+.logPanel p {
+  margin: 7px 0;
+  color: #607277;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.segmented {
+  display: grid;
+  gap: 8px;
+}
+
+.segmented button,
+.secondary,
+.primary,
+.iconButton {
+  border: 1px solid #cddadb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #203039;
+  cursor: pointer;
+}
+
+.segmented button {
+  padding: 11px 12px;
+  text-align: left;
+}
+
+.segmented .active {
+  border-color: #ff6f61;
+  background: #fff2ef;
+}
+
+.actionBand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 clamp(20px, 5vw, 72px) 24px;
+}
+
+.primary,
+.secondary,
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  text-decoration: none;
+}
+
+.primary {
+  border-color: #ff6f61;
+  background: #ff6f61;
+  color: white;
+}
+
+button:disabled {
+  opacity: 0.56;
+  cursor: wait;
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+  gap: 16px;
+  padding: 0 clamp(20px, 5vw, 72px) 24px;
+}
+
+.jsonPanel {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #314147;
+  overflow: auto;
+}
+
+.widePanel,
+.previewPanel {
+  margin: 0 clamp(20px, 5vw, 72px) 24px;
+}
+
+.clipGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.clipCard {
+  border: 1px solid #e2eaea;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fbfdfd;
+}
+
+.clipTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.clipTop strong,
+.timelineItem span {
+  overflow-wrap: anywhere;
+}
+
+.clipTop span {
+  color: #ff6f61;
+  font-weight: 700;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.metrics span {
+  background: #eef4f4;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.clipCard p,
+.clipCard small,
+.timelineItem small,
+.timelineItem em {
+  color: #617276;
+}
+
+.timeline {
+  display: grid;
+  gap: 10px;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 4px 10px;
+  align-items: center;
+  border-bottom: 1px solid #edf2f2;
+  padding: 10px 0;
+}
+
+.timelineItem b {
+  grid-row: span 3;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #203039;
+  color: white;
+  font-size: 12px;
+}
+
+.timelineItem em {
+  font-style: normal;
+}
+
+.videoPreview {
+  width: min(360px, 100%);
+  aspect-ratio: 9 / 16;
+  background: #111;
+  border-radius: 8px;
+}
+
+@media (max-width: 1100px) {
+  .workflow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero,
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .workflow {
+    grid-template-columns: 1fr;
+  }
+
+  .actionBand {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .badges {
+    margin-left: 0;
+  }
+}

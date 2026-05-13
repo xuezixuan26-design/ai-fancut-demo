@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.log
+.venv/
+.env
+node_modules/
+dist/
+storage/raw_videos/*
+storage/bgm/*
+storage/reference/*
+storage/frames/*
+storage/clips/*
+storage/outputs/*
+storage/projects/*
+!storage/**/.gitkeep
