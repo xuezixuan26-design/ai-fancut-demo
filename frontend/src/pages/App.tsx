@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Wand2, Activity, Film, Music, Sparkles } from "lucide-react";
 import { getProject, postJson, uploadFiles } from "../api/client";
 import { HighlightClips } from "../components/HighlightClips";
+import { SkillLibrary } from "../components/SkillLibrary";
 import { StyleSelector } from "../components/StyleSelector";
 import { TimelinePreview } from "../components/TimelinePreview";
 import { UploadPanel } from "../components/UploadPanel";
@@ -129,6 +130,7 @@ export default function App() {
         )}
       </section>
 
+      <SkillLibrary />
       {project?.candidate_clips && <HighlightClips clips={project.candidate_clips} />}
       {project?.timeline && <TimelinePreview timeline={project.timeline as never} />}
       {project?.output && <VideoPreview projectId={project.project_id} />}

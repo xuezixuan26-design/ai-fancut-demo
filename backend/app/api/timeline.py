@@ -4,10 +4,16 @@ from app.models.schemas import TimelineRequest
 from app.services.llm_planner import generate_timeline
 from app.services.project_store import get_project, save_project
 from app.services.reference_analyzer import default_style_template
+from app.services.skill_registry import load_skills
 from app.utils.file_utils import project_dir
 from app.utils.json_utils import write_json
 
 router = APIRouter(tags=["timeline"])
+
+
+@router.get("/skills")
+def skills():
+    return {"skills": load_skills()}
 
 
 @router.post("/generate/timeline")

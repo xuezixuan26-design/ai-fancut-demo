@@ -136,12 +136,31 @@ h2 {
   min-height: 54px;
 }
 
+.fileItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 28px;
+  gap: 8px;
+  align-items: center;
+}
+
 .fileList p,
 .logPanel p {
   margin: 7px 0;
   color: #607277;
   font-size: 13px;
   overflow-wrap: anywhere;
+}
+
+.removeFile {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d7e1e2;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #607277;
+  cursor: pointer;
 }
 
 .segmented {
@@ -280,6 +299,102 @@ button:disabled {
   gap: 10px;
 }
 
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skillCard {
+  display: grid;
+  gap: 6px;
+  border: 1px solid #e2eaea;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfdfd;
+}
+
+.skillCard span,
+.skillCard small,
+.trackRow span,
+.trackRow small {
+  color: #617276;
+  font-size: 12px;
+}
+
+.trackList {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.trackRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 92px 72px;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid #edf2f2;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: #ffffff;
+}
+
+.libraryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.libraryCard {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #e2eaea;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfdfd;
+}
+
+.libraryTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.libraryTop strong,
+.libraryCard p,
+.libraryCard small {
+  overflow-wrap: anywhere;
+}
+
+.libraryTop span {
+  color: #ff6f61;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.libraryCard p {
+  margin: 0;
+  color: #314147;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.libraryCard small,
+.toolLine,
+.mutedText {
+  color: #617276;
+  font-size: 12px;
+}
+
+.toolLine {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 20px;
+}
+
 .timelineItem {
   display: grid;
   grid-template-columns: 36px minmax(0, 1fr);
@@ -290,7 +405,7 @@ button:disabled {
 }
 
 .timelineItem b {
-  grid-row: span 3;
+  grid-row: span 4;
   width: 28px;
   height: 28px;
   display: grid;

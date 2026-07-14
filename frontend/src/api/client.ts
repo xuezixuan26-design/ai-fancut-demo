@@ -25,6 +25,12 @@ export async function getProject(projectId: string) {
   return res.json();
 }
 
+export async function getJson(path: string) {
+  const res = await fetch(`${API_BASE}${path}`);
+  if (!res.ok) throw new Error(await readError(res));
+  return res.json();
+}
+
 async function readError(res: Response) {
   try {
     const data = await res.json();

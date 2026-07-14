@@ -10,6 +10,33 @@ class TimelineItem(BaseModel):
     transition: str = "hard_cut"
     caption: str = ""
     beat_align: bool = True
+    role: str = "beat_cut"
+    shot_size: str = "unknown"
+    subject_position: str = "unknown"
+
+
+class AppliedSkill(BaseModel):
+    skill_id: str
+    skill_name: str
+    type: str = "technical"
+    confidence: float = 0.0
+    reason: str = ""
+
+
+class TrackItem(BaseModel):
+    kind: str
+    start: float = 0.0
+    end: float = 0.0
+    source: str | None = None
+    effect: str | None = None
+    params: dict = Field(default_factory=dict)
+
+
+class TimelineTrack(BaseModel):
+    track_id: str
+    track_type: str
+    label: str
+    items: list[TrackItem] = Field(default_factory=list)
 
 
 class Ending(BaseModel):
@@ -24,5 +51,7 @@ class TimelinePlan(BaseModel):
     style: str = "颜值向饭圈卡点"
     color_grade: str = "cool_white_soft"
     caption_style: str = "bold_white_black_outline"
+    applied_skills: list[AppliedSkill] = Field(default_factory=list)
+    tracks: list[TimelineTrack] = Field(default_factory=list)
     timeline: list[TimelineItem] = Field(default_factory=list)
     ending: Ending = Field(default_factory=Ending)
