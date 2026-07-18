@@ -76,6 +76,44 @@ h2 {
   padding: 18px;
 }
 
+.demoApiPanel {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(260px, 1.4fr) auto auto minmax(160px, 0.8fr);
+  gap: 10px;
+  align-items: center;
+  margin: 18px clamp(20px, 5vw, 72px) 0;
+  border: 1px solid #dfe8e8;
+  border-radius: 8px;
+  padding: 12px;
+  background: #ffffff;
+}
+
+.demoApiPanel div {
+  display: grid;
+  gap: 3px;
+}
+
+.demoApiPanel strong {
+  font-size: 14px;
+}
+
+.demoApiPanel small,
+.demoApiPanel span {
+  color: #617276;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.demoApiPanel input {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid #cddadb;
+  border-radius: 8px;
+  padding: 0 10px;
+  background: #fbfdfd;
+  color: #203039;
+}
+
 .progress {
   height: 10px;
   background: #e8eeee;
@@ -1029,7 +1067,8 @@ button:disabled {
   }
 
   .hero,
-  .results {
+  .results,
+  .demoApiPanel {
     grid-template-columns: 1fr;
   }
 

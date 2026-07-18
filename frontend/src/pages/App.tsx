@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Activity, Film, Music, PlusCircle, Sparkles, Wand2 } from "lucide-react";
-import { getJson, getProject, postJson, uploadFiles } from "../api/client";
+import { configuredApiBase, defaultApiBase, getJson, getProject, postJson, saveApiBase, uploadFiles } from "../api/client";
 import { EngineeringPanel } from "../components/EngineeringPanel";
 import { HighlightClips } from "../components/HighlightClips";
 import { SkillLibrary } from "../components/SkillLibrary";
@@ -62,6 +62,7 @@ type EnhanceCapabilities = {
 const DONE_STATUSES = new Set(["done", "render_failed"]);
 const ENHANCE_DONE_STATUSES = new Set(["enhanced", "enhance_failed"]);
 const PROJECT_STORAGE_KEY = "ai-fancut-project-id";
+const FALLBACK_LOCAL_API = "http://127.0.0.1:8000";
 const ASPECT_RATIOS = [
   { value: "9:16", label: "\u7ad6\u5c4f 9:16" },
   { value: "16:9", label: "\u6a2a\u5c4f 16:9" },
@@ -80,12 +81,38 @@ export default function App() {
   const [capabilities, setCapabilities] = useState<EnhanceCapabilities | null>(null);
   const [log, setLog] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
+  const [apiBaseInput, setApiBaseInput] = useState(configuredApiBase() || FALLBACK_LOCAL_API);
+  const [apiStatus, setApiStatus] = useState<string>("");
 
   useEffect(() => {
     getJson("/api/enhance/capabilities")
       .then((data) => setCapabilities(data))
       .catch(() => setCapabilities({ topaz: { available: false, hint: "无法读取高清修复能力" } }));
   }, []);
+
+  function applyApiBase(value = apiBaseInput) {
+    saveApiBase(value);
+    setApiBaseInput(configuredApiBase() || FALLBACK_LOCAL_API);
+    setProject(null);
+    setProjectId("");
+    setCapabilities(null);
+    setLog((items) => [`已切换后端：${configuredApiBase() || "同域 /api"}`, ...items]);
+    getJson("/api/enhance/capabilities")
+      .then((data) => setCapabilities(data))
+      .catch(() => setCapabilities({ topaz: { available: false, hint: "无法读取高清修复能力" } }));
+  }
+
+  async function testApiBase() {
+    const normalized = apiBaseInput.trim().replace(/\/+$/, "");
+    try {
+      const res = await fetch(`${normalized || defaultApiBase()}/health`);
+      if (!res.ok) throw new Error(res.statusText);
+      const data = await res.json();
+      setApiStatus(`可用：${data.app || "backend"}`);
+    } catch (error) {
+      setApiStatus(`不可用：${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
 
   useEffect(() => {
     const rememberedId = window.localStorage.getItem(PROJECT_STORAGE_KEY);
@@ -241,6 +268,25 @@ export default function App() {
           <small>{projectId || "新项目将在首次上传时创建"}</small>
         </div>
       </header>
+
+      <section className="demoApiPanel">
+        <div>
+          <strong>Demo 后端地址</strong>
+          <small>现场演示可填 Cloudflare Tunnel 地址；留空则使用 Vercel 构建时配置。</small>
+        </div>
+        <input
+          value={apiBaseInput}
+          placeholder="https://xxxx.trycloudflare.com 或 http://127.0.0.1:8000"
+          onChange={(event) => setApiBaseInput(event.target.value)}
+        />
+        <button className="secondary" onClick={() => applyApiBase()}>
+          应用
+        </button>
+        <button className="secondary" onClick={testApiBase}>
+          测试
+        </button>
+        <span>{apiStatus || configuredApiBase() || "同域 /api"}</span>
+      </section>
 
       <section className="workflow">
         <UploadPanel title="Step 1 上传素材视频" accept=".mp4,.mov,.m4v" multiple files={videos} onChange={setVideos} />
