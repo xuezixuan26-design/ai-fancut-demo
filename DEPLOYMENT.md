@@ -11,6 +11,12 @@ Vercel can host the frontend, but the current video rendering backend should not
 
 Deploy `backend/` as a Docker service.
 
+Recommended quick path: use Render Blueprint from `render.yaml`.
+
+```text
+Render Dashboard -> New -> Blueprint -> connect GitHub repo -> select ai-fancut-demo
+```
+
 Required environment variables:
 
 ```env

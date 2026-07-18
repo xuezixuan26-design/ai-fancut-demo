@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: ai-fancut-backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: STORAGE_DIR
+        value: /app/storage
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OUTPUT_FPS
+        value: "30"
+      - key: MAX_UPLOAD_MB
+        value: "800"
+      - key: CORS_ORIGINS
+        value: https://frontend-woad-alpha-11.vercel.app,https://frontend-5unngixzd-xuezixuan26-2698s-projects.vercel.app
+      - key: OPENAI_API_KEY
+        sync: false
