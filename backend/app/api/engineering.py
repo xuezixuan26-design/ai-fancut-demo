@@ -11,11 +11,18 @@ from app.models.schemas import (
     HarnessPreviewRequest,
     HarnessRunRequest,
     HarnessScoreRequest,
+    ProjectRequest,
 )
 from app.services.context_compressor import compress_project_context
 from app.services.edit_critic import critique_project_edit, revise_timeline_from_critic
 from app.services.frame_to_edit_analyzer import analyze_frame_directory
 from app.services.harness import promote_harness_run, run_preview_harness, run_timeline_harness, save_harness_score
+from app.services.hyperframes_exporter import (
+    export_visual_layers_project,
+    visual_asset_path,
+    visual_export_path,
+    visual_manifest_path,
+)
 from app.services.knowledge_base import build_knowledge_base_summary
 from app.services.project_store import get_project
 from app.services.project_store import save_project
@@ -120,6 +127,40 @@ def harness_preview(project_id: str, filename: str):
     path = (base / Path(filename).name).resolve()
     if base not in path.parents or not path.exists() or path.suffix.lower() != ".mp4":
         raise HTTPException(status_code=404, detail="Preview not found")
+    return FileResponse(path, media_type="video/mp4")
+
+
+@router.post("/hyperframes/export")
+def export_hyperframes_visual_layers(req: ProjectRequest):
+    try:
+        state = get_project(req.project_id)
+        return export_visual_layers_project(state)
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+
+@router.get("/hyperframes/preview/{project_id}")
+def hyperframes_preview(project_id: str):
+    path = visual_export_path(project_id)
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Visual layer export not found")
+    return FileResponse(path, media_type="text/html")
+
+
+@router.get("/hyperframes/manifest/{project_id}")
+def hyperframes_manifest(project_id: str):
+    manifest = read_json(visual_manifest_path(project_id))
+    if not manifest:
+        raise HTTPException(status_code=404, detail="Visual layer manifest not found")
+    return manifest
+
+
+@router.get("/hyperframes/asset/{project_id}/{filename}")
+def hyperframes_asset(project_id: str, filename: str):
+    path = visual_asset_path(project_id, filename).resolve()
+    base = project_asset_dir("raw_videos", project_id).resolve()
+    if base not in path.parents or not path.exists() or path.suffix.lower() not in {".mp4", ".mov", ".m4v"}:
+        raise HTTPException(status_code=404, detail="Visual layer asset not found")
     return FileResponse(path, media_type="video/mp4")
 
 

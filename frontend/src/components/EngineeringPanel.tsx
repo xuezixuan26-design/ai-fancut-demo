@@ -1,6 +1,6 @@
 import { Clapperboard, Database, FileText, GitCompare, Images, RefreshCw, Send } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { getJson, postJson } from "../api/client";
+import { configuredApiBase, getJson, postJson } from "../api/client";
 
 const L = {
   title: "\u5de5\u7a0b\u5316\u8bc4\u4f30",
@@ -15,6 +15,7 @@ const L = {
   analyzeFrames: "\u5206\u6790\u62bd\u5e27",
   runCritic: "\u5ba1\u7247",
   reviseTimeline: "\u81ea\u52a8\u6539\u7a3f v2",
+  exportVisualLayers: "\u89c6\u89c9\u5305\u88c5",
   framePlaceholder: "\u62bd\u5e27\u76ee\u5f55",
   feedbackPlaceholder:
     "\u53ef\u9009\uff1a\u8bb0\u5f55\u8fd9\u6b21\u4e0d\u6ee1\u610f\u6216\u504f\u597d\u7684\u53cd\u9988\uff0c\u4f8b\u5982\u6548\u679c\u91cd\u590d\u3001\u7247\u6bb5\u91cd\u590d\u3001\u97f3\u4e50\u5361\u70b9\u66f4\u514b\u5236\u3002",
@@ -196,6 +197,7 @@ type FrameAnalysis = {
 
 type PromoteResult = { promoted_style?: string; timeline_items?: number };
 type RenderResult = { status?: string; progress?: number };
+type VisualLayerExport = { preview_url?: string; manifest_url?: string; features?: string[] };
 type CriticReport = {
   summary?: { issue_count?: number; high_count?: number; ready_for_final?: boolean; music_picture_score?: number };
   annotations?: { kind?: string; time_sec?: number; severity?: string; message?: string }[];
@@ -229,7 +231,9 @@ function pct(value: unknown) {
 }
 
 function apiUrl(path?: string) {
-  return path || "";
+  if (!path) return "";
+  if (/^https?:\/\//.test(path)) return path;
+  return `${configuredApiBase()}${path}`;
 }
 
 function chipList(items?: unknown[], limit = 5) {
@@ -256,6 +260,7 @@ export function EngineeringPanel({ projectId, busy }: Props) {
   const [frameAnalysis, setFrameAnalysis] = useState<FrameAnalysis | null>(null);
   const [promoteResult, setPromoteResult] = useState<PromoteResult | null>(null);
   const [renderResult, setRenderResult] = useState<RenderResult | null>(null);
+  const [visualExport, setVisualExport] = useState<VisualLayerExport | null>(null);
   const [criticReport, setCriticReport] = useState<CriticReport | null>(null);
   const [revisionResult, setRevisionResult] = useState<RevisionResult | null>(null);
   const [working, setWorking] = useState(false);
@@ -354,6 +359,13 @@ export function EngineeringPanel({ projectId, busy }: Props) {
     });
   }
 
+  async function exportVisualLayers() {
+    if (!projectId) return;
+    await runAction(async () => {
+      setVisualExport((await postJson("/api/hyperframes/export", { project_id: projectId })) as VisualLayerExport);
+    });
+  }
+
   return (
     <section className="widePanel engineeringPanel">
       <div className="panelHeader">
@@ -386,6 +398,10 @@ export function EngineeringPanel({ projectId, busy }: Props) {
           <button className="iconButton" disabled={disabled} onClick={() => runAction(async () => setRevisionResult((await postJson("/api/critic/revise", { project_id: projectId, apply_revision: true })) as RevisionResult))}>
             <Send size={16} />
             {L.reviseTimeline}
+          </button>
+          <button className="iconButton" disabled={disabled} onClick={exportVisualLayers}>
+            <Clapperboard size={16} />
+            {L.exportVisualLayers}
           </button>
           <button className="iconButton" disabled={working} onClick={() => runAction(async () => setKbSummary((await getJson("/api/kb/summary?compressed=true")) as KbSummary))}>
             <Database size={16} />
@@ -678,6 +694,13 @@ export function EngineeringPanel({ projectId, busy }: Props) {
             <div className="comparisonBox">
               <p>{L.winner}: {fixText(harnessReport.comparison_summary.winner)}</p>
               {harnessReport.comparison_summary.next_actions?.slice(0, 2).map((item) => <p key={item}>{L.next}: {fixText(item)}</p>)}
+            </div>
+          ) : null}
+          {visualExport?.preview_url ? (
+            <div className="comparisonBox">
+              <p>视觉包装工程已生成</p>
+              <p><a href={apiUrl(visualExport.preview_url)} target="_blank" rel="noreferrer">打开 HyperFrames/HTML 预览</a></p>
+              <p>{(visualExport.features || []).slice(0, 6).map(fixText).join(" / ")}</p>
             </div>
           ) : null}
           {harnessReport?.runs?.slice(0, 4).map((run) => (

@@ -1,4 +1,5 @@
 import { Download, FileJson, Sparkles } from "lucide-react";
+import { configuredApiBase } from "../api/client";
 
 type Props = {
   projectId?: string;
@@ -73,6 +74,7 @@ export function VideoPreview({
   const url = `/api/output/${projectId}`;
   const enhancedUrl = `/api/enhanced-output/${projectId}`;
   const capcutUrl = `/api/capcut/actions/${projectId}`;
+  const assetUrl = (path: string) => `${configuredApiBase()}${path}`;
   const hasOutput = Boolean(output);
   const done = status === "done" || status === "enhanced" || Boolean(output);
   const canExportActions = !["created", "ready"].includes(status);
@@ -85,7 +87,7 @@ export function VideoPreview({
         <h2>输出结果</h2>
         <div className="panelActions">
           {canExportActions && (
-            <a className="iconButton" href={capcutUrl} download>
+            <a className="iconButton" href={assetUrl(capcutUrl)} download>
               <FileJson size={16} />
               CapCut 动作
             </a>
@@ -107,14 +109,14 @@ export function VideoPreview({
                 <Sparkles size={16} />
                 内置高清
               </button>
-              <a className="iconButton" href={url} download>
+              <a className="iconButton" href={assetUrl(url)} download>
                 <Download size={16} />
                 下载成片
               </a>
             </>
           )}
           {enhancedOutput && (
-            <a className="iconButton primaryLink" href={enhancedUrl} download>
+            <a className="iconButton primaryLink" href={assetUrl(enhancedUrl)} download>
               <Download size={16} />
               下载高清版
             </a>
@@ -136,12 +138,12 @@ export function VideoPreview({
         {renderError && <p className="errorText">{renderError}</p>}
         {enhanceError && <p className="errorText">{enhanceError}</p>}
       </div>
-      {done && <video className="videoPreview" style={{ aspectRatio: cssAspectRatio(aspectRatio) }} src={enhancedOutput ? enhancedUrl : url} controls />}
+      {done && <video className="videoPreview" style={{ aspectRatio: cssAspectRatio(aspectRatio) }} src={assetUrl(enhancedOutput ? enhancedUrl : url)} controls />}
       {latestHistory.length ? (
         <div className="renderHistoryList">
           <strong>渲染历史</strong>
           {latestHistory.map((item) => (
-            <a className="renderHistoryItem" key={item.version} href={item.video_url || `/api/render/history/${projectId}/${item.version}`} target="_blank" rel="noreferrer">
+            <a className="renderHistoryItem" key={item.version} href={assetUrl(item.video_url || `/api/render/history/${projectId}/${item.version}`)} target="_blank" rel="noreferrer">
               <span>v{String(item.version || 0).padStart(3, "0")}</span>
               <small>
                 {item.style_template || "timeline"} / {item.target_duration ? `${Number(item.target_duration).toFixed(1)}s` : "-"} / {item.aspect_ratio || "-"}
