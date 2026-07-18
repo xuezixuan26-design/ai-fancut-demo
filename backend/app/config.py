@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import Any
 
 try:
     from pydantic_settings import BaseSettings
@@ -36,6 +37,12 @@ if BaseSettings is not None:
         output_fps: int = 30
         max_upload_mb: int = 800
 
+        @classmethod
+        def parse_cors_origins(cls, value: Any) -> list[str]:
+            if isinstance(value, str):
+                return [origin.strip() for origin in value.split(",") if origin.strip()]
+            return value
+
         class Config:
             env_file = ".env"
             extra = "ignore"
@@ -44,4 +51,11 @@ else:
     Settings = _FallbackSettings
 
 
-settings = Settings()
+def _apply_runtime_env(settings_obj):
+    raw_origins = os.getenv("CORS_ORIGINS")
+    if raw_origins:
+        settings_obj.cors_origins = [origin.strip() for origin in raw_origins.split(",") if origin.strip()]
+    return settings_obj
+
+
+settings = _apply_runtime_env(Settings())

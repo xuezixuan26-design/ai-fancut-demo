@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { UploadCloud, X } from "lucide-react";
 
 type Props = {
@@ -9,8 +10,10 @@ type Props = {
 };
 
 export function UploadPanel({ title, accept, multiple, files, onChange }: Props) {
+  const [dragging, setDragging] = useState(false);
+
   function handleFiles(nextFiles: FileList | null) {
-    const selected = Array.from(nextFiles || []);
+    const selected = Array.from(nextFiles || []).filter((file) => isAccepted(file, accept));
     if (!multiple) {
       onChange(selected.slice(0, 1));
       return;
@@ -34,7 +37,26 @@ export function UploadPanel({ title, accept, multiple, files, onChange }: Props)
         <UploadCloud size={18} />
         <h2>{title}</h2>
       </div>
-      <label className="dropzone">
+      <label
+        className={`dropzone${dragging ? " dragging" : ""}`}
+        onDragEnter={(event) => {
+          event.preventDefault();
+          setDragging(true);
+        }}
+        onDragOver={(event) => {
+          event.preventDefault();
+          setDragging(true);
+        }}
+        onDragLeave={(event) => {
+          event.preventDefault();
+          setDragging(false);
+        }}
+        onDrop={(event) => {
+          event.preventDefault();
+          setDragging(false);
+          handleFiles(event.dataTransfer.files);
+        }}
+      >
         <input
           type="file"
           accept={accept}
@@ -44,7 +66,7 @@ export function UploadPanel({ title, accept, multiple, files, onChange }: Props)
             event.currentTarget.value = "";
           }}
         />
-        <span>{multiple ? "选择多段素材" : "选择文件"}</span>
+        <span>{multiple ? "拖拽或选择多段素材" : "拖拽或选择文件"}</span>
       </label>
       <div className="fileList">
         {files.length === 0 ? (
@@ -62,4 +84,12 @@ export function UploadPanel({ title, accept, multiple, files, onChange }: Props)
       </div>
     </section>
   );
+}
+
+function isAccepted(file: File, accept: string) {
+  const suffix = `.${file.name.split(".").pop()?.toLowerCase()}`;
+  return accept
+    .split(",")
+    .map((item) => item.trim().toLowerCase())
+    .includes(suffix);
 }

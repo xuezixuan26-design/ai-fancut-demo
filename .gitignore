@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 *.log
+backend/render_sourceTEMP*.mp4
 .venv/
 .env
 node_modules/
@@ -12,4 +13,5 @@ storage/frames/*
 storage/clips/*
 storage/outputs/*
 storage/projects/*
+storage/knowledge_base/*
 !storage/**/.gitkeep

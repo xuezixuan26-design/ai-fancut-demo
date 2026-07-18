@@ -35,8 +35,17 @@ def select_skills(reference_style: dict, candidate_clips: list[dict], beats: dic
     has_closeup = any(clip.get("shot_size") in {"closeup", "medium_closeup"} for clip in candidate_clips)
     has_transform_cue = _has_transform_cue(reference_style, candidate_clips)
     high_cut_reference = reference_style.get("cut_density") == "high"
+    progressive_beauty = reference_style.get("edit_profile") == "progressive_idol_beauty"
+    monochrome_beauty = reference_style.get("edit_profile") == "monochrome_to_color_beauty"
+    contrast_two_video = reference_style.get("edit_profile") == "contrast_two_video" or reference_style.get("template") == "contrast_special"
 
     selected: list[dict[str, Any]] = []
+    if progressive_beauty and "progressive_idol_beauty_arc" in skills:
+        selected.append(skill_summary(skills["progressive_idol_beauty_arc"], 0.86, "参考风格需要先建立人物、再动作递进、再进入核心展示和高潮收尾"))
+    if monochrome_beauty and "monochrome_to_color_beauty_reveal" in skills:
+        selected.append(skill_summary(skills["monochrome_to_color_beauty_reveal"], 0.88, "参考风格需要黑白/低饱和氛围到高清彩色颜值展示的微递进"))
+    if contrast_two_video and "contrast_special_two_video" in skills:
+        selected.append(skill_summary(skills["contrast_special_two_video"], 0.9, "contrast template requires two source-family setup/reveal planning"))
     if best_score >= 7.0 or avg_face_ratio >= 0.08 or has_closeup:
         selected.append(skill_summary(skills["beauty_hook_opening"], 0.84, "存在高分近景/特写片段，适合开头抓人"))
         selected.append(skill_summary(skills["cool_white_beauty_closeup"], 0.78, "候选素材里有人脸清晰的颜值展示片段"))
@@ -176,6 +185,8 @@ def _timeline_start(timeline: list[dict[str, Any]], index: int) -> float:
 
 
 def _base_style_effect(skill_ids: set[str]) -> str:
+    if "monochrome_to_color_beauty_reveal" in skill_ids:
+        return "cool_white_face_glow"
     if "red_black_stage_tracking" in skill_ids:
         return "red_black_stage_grade"
     if "cool_white_beauty_closeup" in skill_ids:

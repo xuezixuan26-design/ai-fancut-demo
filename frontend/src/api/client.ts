@@ -1,4 +1,4 @@
-export const API_BASE = "";
+export const API_BASE = import.meta.env.VITE_API_BASE || "";
 
 export async function uploadFiles(path: string, files: File[], projectId?: string) {
   const form = new FormData();

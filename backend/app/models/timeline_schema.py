@@ -8,11 +8,20 @@ class TimelineItem(BaseModel):
     speed: float = 1.0
     effect: str = "slight_zoom"
     transition: str = "hard_cut"
+    camera_instruction: dict = Field(default_factory=dict)
+    transition_instruction: dict = Field(default_factory=dict)
+    slow_motion: dict = Field(default_factory=dict)
     caption: str = ""
     beat_align: bool = True
+    beat_hit: bool = False
+    music_section: str = "unknown"
+    output_start: float | None = None
+    output_end: float | None = None
+    visual_change_strength: float = 0.0
     role: str = "beat_cut"
     shot_size: str = "unknown"
     subject_position: str = "unknown"
+    crop_center: tuple[float, float] | None = None
 
 
 class AppliedSkill(BaseModel):

@@ -52,7 +52,7 @@ def analyze_materials(req: ProjectRequest):
 
 
 @router.post("/bgm")
-def analyze_bgm(req: ProjectRequest, target_duration: int = 30):
+def analyze_bgm(req: ProjectRequest, target_duration: int | None = None):
     try:
         state = get_project(req.project_id)
         if not state.bgm:

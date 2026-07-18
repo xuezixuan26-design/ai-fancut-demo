@@ -3,7 +3,10 @@ const styles = [
   { id: "korean_cool_white", label: "韩系冷白风" },
   { id: "cinematic", label: "氛围电影风" },
   { id: "sweet", label: "甜向安利风" },
-  { id: "stage", label: "高能舞台风" }
+  { id: "stage", label: "高能舞台风" },
+  { id: "progressive_idol_beauty", label: "递进颜值复刻" },
+  { id: "monochrome_beauty_reveal", label: "黑白揭晓颜值" },
+  { id: "contrast_special", label: "反差专场" },
 ];
 
 type Props = {

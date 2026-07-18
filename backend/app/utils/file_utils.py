@@ -43,6 +43,13 @@ def project_asset_dir(kind: str, project_id: str) -> Path:
     return path
 
 
+def cleanup_project_sources(project_id: str) -> None:
+    for kind in ["raw_videos", "bgm", "reference", "frames", "clips"]:
+        path = settings.storage_dir / kind / project_id
+        if path.exists():
+            shutil.rmtree(path)
+
+
 async def save_upload(upload: UploadFile, folder: Path, allowed_exts: set[str]) -> Path:
     ext = Path(upload.filename or "").suffix.lower()
     if ext not in allowed_exts:

@@ -25,7 +25,7 @@ export function HighlightClips({ clips }: { clips: Clip[] }) {
               <span>{clip.highlight_score.toFixed(1)}</span>
             </div>
             <p>
-              {clip.start}s - {clip.end}s · {clip.recommended_usage}
+              {clip.start}s - {clip.end}s / {clip.recommended_usage}
             </p>
             <div className="metrics">
               <span>清晰 {clip.sharpness_score.toFixed(1)}</span>

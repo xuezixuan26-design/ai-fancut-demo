@@ -4,9 +4,25 @@
     "skill_name": "神颜 Hook 开头",
     "type": "structure",
     "goal": "在前 1-2 秒用清晰近脸、眼神或强动作抓住注意力。",
-    "applies_when": ["有清晰近脸", "适合开场", "第一拍需要抓人"],
-    "preferred_assets": ["正脸", "侧脸", "抬眼", "回眸", "微笑", "冷脸"],
-    "avoid_assets": ["远景", "糊脸", "背影", "无主体"],
+    "applies_when": [
+      "有清晰近脸",
+      "适合开场",
+      "第一拍需要抓人"
+    ],
+    "preferred_assets": [
+      "正脸",
+      "侧脸",
+      "抬眼",
+      "回眸",
+      "微笑",
+      "冷脸"
+    ],
+    "avoid_assets": [
+      "远景",
+      "糊脸",
+      "背影",
+      "无主体"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.35,
       "face_ratio_score": 0.25,
@@ -15,22 +31,55 @@
       "lighting_score": 0.1
     },
     "timeline_rules": {
-      "duration": [0.8, 2.0],
-      "section": ["opening"],
-      "effects": ["micro_push", "hard_cut_on_first_beat"]
+      "duration": [
+        0.8,
+        2.0
+      ],
+      "section": [
+        "opening"
+      ],
+      "effects": [
+        "micro_push",
+        "hard_cut_on_first_beat"
+      ]
     },
-    "tool_actions": ["select_closeup", "crop_face_center_upper", "add_micro_push"],
-    "fallback_rules": ["没有近脸时用半身清晰镜头", "没有强动作时用慢推增强注视感"],
-    "self_review": ["开头是否有脸", "脸是否清晰", "第一秒是否有记忆点"]
+    "tool_actions": [
+      "select_closeup",
+      "crop_face_center_upper",
+      "add_micro_push"
+    ],
+    "fallback_rules": [
+      "没有近脸时用半身清晰镜头",
+      "没有强动作时用慢推增强注视感"
+    ],
+    "self_review": [
+      "开头是否有脸",
+      "脸是否清晰",
+      "第一秒是否有记忆点"
+    ]
   },
   {
     "skill_id": "cool_white_beauty_closeup",
     "skill_name": "冷白神颜近景",
     "type": "visual",
     "goal": "用冷白滤镜、轮廓光、稳定近景和微推突出爱豆颜值。",
-    "applies_when": ["有正面或微侧脸近景", "脸部清晰", "背景可压暗"],
-    "preferred_assets": ["正面近景", "胸口以上", "头发轮廓清楚", "眼神稳定"],
-    "avoid_assets": ["远景", "脸部模糊", "强运动模糊", "背景杂乱"],
+    "applies_when": [
+      "有正面或微侧脸近景",
+      "脸部清晰",
+      "背景可压暗"
+    ],
+    "preferred_assets": [
+      "正面近景",
+      "胸口以上",
+      "头发轮廓清楚",
+      "眼神稳定"
+    ],
+    "avoid_assets": [
+      "远景",
+      "脸部模糊",
+      "强运动模糊",
+      "背景杂乱"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.3,
       "composition_score": 0.25,
@@ -40,22 +89,58 @@
       "motion_stability_score": 0.1
     },
     "timeline_rules": {
-      "duration": [1.2, 4.0],
-      "section": ["opening", "beauty_reveal", "ending"],
-      "effects": ["slow_zoom_in", "soft_glow"]
+      "duration": [
+        1.2,
+        4.0
+      ],
+      "section": [
+        "opening",
+        "beauty_reveal",
+        "ending"
+      ],
+      "effects": [
+        "slow_zoom_in",
+        "soft_glow"
+      ]
     },
-    "tool_actions": ["crop_face_center_upper", "apply_cool_white_grade", "add_slow_zoom"],
-    "fallback_rules": ["背景过亮时降背景饱和和亮度", "没有轮廓光时加轻微暗角和柔光"],
-    "self_review": ["脸是否在上半区", "冷白是否干净", "是否没有死白过曝"]
+    "tool_actions": [
+      "crop_face_center_upper",
+      "apply_cool_white_grade",
+      "add_slow_zoom"
+    ],
+    "fallback_rules": [
+      "背景过亮时降背景饱和和亮度",
+      "没有轮廓光时加轻微暗角和柔光"
+    ],
+    "self_review": [
+      "脸是否在上半区",
+      "冷白是否干净",
+      "是否没有死白过曝"
+    ]
   },
   {
     "skill_id": "red_black_stage_tracking",
     "skill_name": "红黑舞台高能追脸",
     "type": "shot",
     "goal": "用红黑高对比舞台滤镜、追脸裁切和大动作制造高能高潮。",
-    "applies_when": ["有舞台画面", "服装或灯光有强颜色", "有半身动作或侧脸"],
-    "preferred_assets": ["红色或高对比舞台", "清晰人脸", "半身动作", "侧脸", "甩衣"],
-    "avoid_assets": ["脸长期遮挡", "舞台过暗", "远景过多", "主体不明确群舞"],
+    "applies_when": [
+      "有舞台画面",
+      "服装或灯光有强颜色",
+      "有半身动作或侧脸"
+    ],
+    "preferred_assets": [
+      "红色或高对比舞台",
+      "清晰人脸",
+      "半身动作",
+      "侧脸",
+      "甩衣"
+    ],
+    "avoid_assets": [
+      "脸长期遮挡",
+      "舞台过暗",
+      "远景过多",
+      "主体不明确群舞"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.25,
       "stage_color_contrast_score": 0.2,
@@ -65,22 +150,56 @@
       "composition_score": 0.1
     },
     "timeline_rules": {
-      "duration": [2.0, 8.0],
-      "section": ["climax", "stage_reveal"],
-      "effects": ["face_tracking", "action_follow", "red_black_grade"]
+      "duration": [
+        2.0,
+        8.0
+      ],
+      "section": [
+        "climax",
+        "stage_reveal"
+      ],
+      "effects": [
+        "face_tracking",
+        "action_follow",
+        "red_black_grade"
+      ]
     },
-    "tool_actions": ["select_stage_clips", "track_face_crop", "apply_red_black_grade"],
-    "fallback_rules": ["没有红黑舞台时提高主色饱和", "没有大动作时用清晰近脸快切替代"],
-    "self_review": ["主角脸是否清楚", "红色是否有冲击", "裁切是否跟上动作"]
+    "tool_actions": [
+      "select_stage_clips",
+      "track_face_crop",
+      "apply_red_black_grade"
+    ],
+    "fallback_rules": [
+      "没有红黑舞台时提高主色饱和",
+      "没有大动作时用清晰近脸快切替代"
+    ],
+    "self_review": [
+      "主角脸是否清楚",
+      "红色是否有冲击",
+      "裁切是否跟上动作"
+    ]
   },
   {
     "skill_id": "stage_beat_zoom_cut",
     "skill_name": "舞台卡点抽帧放大",
     "type": "technical",
     "goal": "把舞台素材按节拍切成短段，并用渐渐放大、闪黑、轻震动制造高频卡点。",
-    "applies_when": ["音乐节拍明显", "有舞台或近脸动作", "需要高频卡点"],
-    "preferred_assets": ["半身舞台", "动作变化", "灯光强", "清晰脸"],
-    "avoid_assets": ["远景过多", "脸糊", "动作太平"],
+    "applies_when": [
+      "音乐节拍明显",
+      "有舞台或近脸动作",
+      "需要高频卡点"
+    ],
+    "preferred_assets": [
+      "半身舞台",
+      "动作变化",
+      "灯光强",
+      "清晰脸"
+    ],
+    "avoid_assets": [
+      "远景过多",
+      "脸糊",
+      "动作太平"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.25,
       "action_energy_score": 0.25,
@@ -89,22 +208,57 @@
       "lighting_score": 0.1
     },
     "timeline_rules": {
-      "clip_duration": [0.25, 0.45],
-      "section": ["hook", "climax"],
-      "effects": ["gradual_zoom_in", "flash_black", "light_shake"]
+      "clip_duration": [
+        0.25,
+        0.45
+      ],
+      "section": [
+        "hook",
+        "climax"
+      ],
+      "effects": [
+        "gradual_zoom_in",
+        "flash_black",
+        "light_shake"
+      ]
     },
-    "tool_actions": ["detect_beats", "split_short_clips", "add_zoom_in", "insert_flash_black"],
-    "fallback_rules": ["音乐节拍弱时降低快切密度", "无舞台时用近脸短切替代"],
-    "self_review": ["切点是否贴拍", "单段是否太长", "闪黑是否太密"]
+    "tool_actions": [
+      "detect_beats",
+      "split_short_clips",
+      "add_zoom_in",
+      "insert_flash_black"
+    ],
+    "fallback_rules": [
+      "音乐节拍弱时降低快切密度",
+      "无舞台时用近脸短切替代"
+    ],
+    "self_review": [
+      "切点是否贴拍",
+      "单段是否太长",
+      "闪黑是否太密"
+    ]
   },
   {
     "skill_id": "beat_keyframe_flash_focus",
     "skill_name": "卡点关键帧闪白聚焦",
     "type": "technical",
     "goal": "用关键帧推拉、白闪黑闪、圆形聚焦和柔光增强饭圈二创质感。",
-    "applies_when": ["音乐强拍明显", "有近脸或半身舞台", "需要增强冲击"],
-    "preferred_assets": ["近脸", "舞台高光", "强拍动作", "清晰五官"],
-    "avoid_assets": ["慢节奏氛围", "远景过多", "脸部不清晰"],
+    "applies_when": [
+      "音乐强拍明显",
+      "有近脸或半身舞台",
+      "需要增强冲击"
+    ],
+    "preferred_assets": [
+      "近脸",
+      "舞台高光",
+      "强拍动作",
+      "清晰五官"
+    ],
+    "avoid_assets": [
+      "慢节奏氛围",
+      "远景过多",
+      "脸部不清晰"
+    ],
     "scoring_rules": {
       "beat_match_score": 0.3,
       "face_clear_score": 0.25,
@@ -113,22 +267,58 @@
       "lighting_score": 0.15
     },
     "timeline_rules": {
-      "clip_duration": [0.25, 0.6],
-      "section": ["climax", "memory_point"],
-      "effects": ["zoom_punch", "flash_white", "flash_black", "circle_focus", "soft_glow"]
+      "clip_duration": [
+        0.25,
+        0.6
+      ],
+      "section": [
+        "climax",
+        "memory_point"
+      ],
+      "effects": [
+        "zoom_punch",
+        "flash_white",
+        "flash_black",
+        "circle_focus",
+        "soft_glow"
+      ]
     },
-    "tool_actions": ["add_keyframe_motion", "insert_flash_materials", "add_face_focus_glow"],
-    "fallback_rules": ["画面已过亮时减少白闪", "脸不够近时不使用圆形聚焦"],
-    "self_review": ["白闪是否太频繁", "聚焦是否落在人脸", "发光是否盖住五官"]
+    "tool_actions": [
+      "add_keyframe_motion",
+      "insert_flash_materials",
+      "add_face_focus_glow"
+    ],
+    "fallback_rules": [
+      "画面已过亮时减少白闪",
+      "脸不够近时不使用圆形聚焦"
+    ],
+    "self_review": [
+      "白闪是否太频繁",
+      "聚焦是否落在人脸",
+      "发光是否盖住五官"
+    ]
   },
   {
     "skill_id": "black_fog_opening_reveal",
     "skill_name": "黑雾开场拉镜",
     "type": "structure",
     "goal": "用黑色遮罩、缩小画面、蒙版打开和快速放大制造暗场开场 reveal。",
-    "applies_when": ["需要强开场", "前 1-2 个节奏点明显", "素材适合暗场切入"],
-    "preferred_assets": ["暗场舞台", "人物轮廓", "清晰半身", "强节奏开头"],
-    "avoid_assets": ["画面过亮", "主体太小", "开头无节奏点"],
+    "applies_when": [
+      "需要强开场",
+      "前 1-2 个节奏点明显",
+      "素材适合暗场切入"
+    ],
+    "preferred_assets": [
+      "暗场舞台",
+      "人物轮廓",
+      "清晰半身",
+      "强节奏开头"
+    ],
+    "avoid_assets": [
+      "画面过亮",
+      "主体太小",
+      "开头无节奏点"
+    ],
     "scoring_rules": {
       "beat_match_score": 0.3,
       "background_dark_score": 0.25,
@@ -137,22 +327,56 @@
       "motion_stability_score": 0.1
     },
     "timeline_rules": {
-      "intro_duration": [0.6, 1.5],
-      "section": ["opening"],
-      "effects": ["black_mask", "center_expand", "fast_zoom_reveal"]
+      "intro_duration": [
+        0.6,
+        1.5
+      ],
+      "section": [
+        "opening"
+      ],
+      "effects": [
+        "black_mask",
+        "center_expand",
+        "fast_zoom_reveal"
+      ]
     },
-    "tool_actions": ["add_black_mask", "animate_mask_open", "add_fast_zoom_reveal"],
-    "fallback_rules": ["没有暗场时先压暗画面", "没有强拍时用第一处能量峰打开"],
-    "self_review": ["黑场是否不拖沓", "打开是否卡点", "reveal 后主体是否清楚"]
+    "tool_actions": [
+      "add_black_mask",
+      "animate_mask_open",
+      "add_fast_zoom_reveal"
+    ],
+    "fallback_rules": [
+      "没有暗场时先压暗画面",
+      "没有强拍时用第一处能量峰打开"
+    ],
+    "self_review": [
+      "黑场是否不拖沓",
+      "打开是否卡点",
+      "reveal 后主体是否清楚"
+    ]
   },
   {
     "skill_id": "fandom_collage_intro",
     "skill_name": "饭圈图文拼贴开场",
     "type": "structure",
     "goal": "用主视频背景、多张图片、斜切蒙版、大字标题和错落排版制作饭圈视觉包装。",
-    "applies_when": ["有多张爱豆图", "需要人物介绍或封面感开场", "素材节奏不够强"],
-    "preferred_assets": ["清晰人物照片", "不同造型", "主视频背景", "艺人名文字"],
-    "avoid_assets": ["图片风格差异过大", "主体脸太小", "背景过亮", "元素遮脸"],
+    "applies_when": [
+      "有多张爱豆图",
+      "需要人物介绍或封面感开场",
+      "素材节奏不够强"
+    ],
+    "preferred_assets": [
+      "清晰人物照片",
+      "不同造型",
+      "主视频背景",
+      "艺人名文字"
+    ],
+    "avoid_assets": [
+      "图片风格差异过大",
+      "主体脸太小",
+      "背景过亮",
+      "元素遮脸"
+    ],
     "scoring_rules": {
       "image_face_clear_score": 0.3,
       "layout_balance_score": 0.25,
@@ -161,22 +385,59 @@
       "background_contrast_score": 0.1
     },
     "timeline_rules": {
-      "duration": [1.5, 3.0],
-      "section": ["opening", "transition"],
-      "effects": ["picture_in_picture", "stroke_border", "slide_in", "scale_in"]
+      "duration": [
+        1.5,
+        3.0
+      ],
+      "section": [
+        "opening",
+        "transition"
+      ],
+      "effects": [
+        "picture_in_picture",
+        "stroke_border",
+        "slide_in",
+        "scale_in"
+      ]
     },
-    "tool_actions": ["layout_collage", "add_image_borders", "animate_overlay_entries", "add_title_text"],
-    "fallback_rules": ["图片不足时用视频截图补齐", "背景太亮时降低亮度和饱和"],
-    "self_review": ["主脸是否被遮挡", "拼贴是否有层次", "标题是否醒目"]
+    "tool_actions": [
+      "layout_collage",
+      "add_image_borders",
+      "animate_overlay_entries",
+      "add_title_text"
+    ],
+    "fallback_rules": [
+      "图片不足时用视频截图补齐",
+      "背景太亮时降低亮度和饱和"
+    ],
+    "self_review": [
+      "主脸是否被遮挡",
+      "拼贴是否有层次",
+      "标题是否醒目"
+    ]
   },
   {
     "skill_id": "multi_layer_stage_climax",
     "skill_name": "多轨舞台高能工程",
     "type": "structure",
     "goal": "组织主视频轨、底层氛围轨、节拍效果轨和高光轨，形成完整舞台高潮段。",
-    "applies_when": ["有连续舞台片段", "音乐节拍明显", "有多种景别"],
-    "preferred_assets": ["全身", "半身", "近脸", "大动作", "强灯光"],
-    "avoid_assets": ["全程单一景别", "素材过短", "主体不明确"],
+    "applies_when": [
+      "有连续舞台片段",
+      "音乐节拍明显",
+      "有多种景别"
+    ],
+    "preferred_assets": [
+      "全身",
+      "半身",
+      "近脸",
+      "大动作",
+      "强灯光"
+    ],
+    "avoid_assets": [
+      "全程单一景别",
+      "素材过短",
+      "主体不明确"
+    ],
     "scoring_rules": {
       "beat_match_score": 0.25,
       "shot_variety_score": 0.2,
@@ -185,22 +446,59 @@
       "lighting_score": 0.15
     },
     "timeline_rules": {
-      "duration": [6.0, 15.0],
-      "section": ["climax"],
-      "tracks": ["main_video", "base_style", "beat_effect", "highlight_overlay", "audio"]
+      "duration": [
+        6.0,
+        15.0
+      ],
+      "section": [
+        "climax"
+      ],
+      "tracks": [
+        "main_video",
+        "base_style",
+        "beat_effect",
+        "highlight_overlay",
+        "audio"
+      ]
     },
-    "tool_actions": ["build_multitrack_plan", "add_base_style_track", "add_beat_effect_track", "place_face_memory_point"],
-    "fallback_rules": ["景别不足时用裁切制造远近变化", "动作不足时降低效果密度"],
-    "self_review": ["是否有段落递进", "效果是否贴强拍", "结尾是否有近脸记忆点"]
+    "tool_actions": [
+      "build_multitrack_plan",
+      "add_base_style_track",
+      "add_beat_effect_track",
+      "place_face_memory_point"
+    ],
+    "fallback_rules": [
+      "景别不足时用裁切制造远近变化",
+      "动作不足时降低效果密度"
+    ],
+    "self_review": [
+      "是否有段落递进",
+      "效果是否贴强拍",
+      "结尾是否有近脸记忆点"
+    ]
   },
   {
     "skill_id": "transform_reveal_adaptive",
     "skill_name": "变装 Reveal 适配",
     "type": "structure",
     "goal": "制造前后视觉反差、中段 reveal 和后段颜值或舞台展示。",
-    "applies_when": ["有前后造型差异", "有可卡点的转场位置", "需要变装或舞台切入"],
-    "preferred_assets": ["变装前日常", "遮挡动作", "甩头", "闪白可接点", "变装后近脸或舞台"],
-    "avoid_assets": ["前后无差异", "reveal 后脸不清晰", "素材顺序混乱"],
+    "applies_when": [
+      "有前后造型差异",
+      "有可卡点的转场位置",
+      "需要变装或舞台切入"
+    ],
+    "preferred_assets": [
+      "变装前日常",
+      "遮挡动作",
+      "甩头",
+      "闪白可接点",
+      "变装后近脸或舞台"
+    ],
+    "avoid_assets": [
+      "前后无差异",
+      "reveal 后脸不清晰",
+      "素材顺序混乱"
+    ],
     "scoring_rules": {
       "scene_contrast_score": 0.3,
       "beat_match_score": 0.2,
@@ -209,22 +507,59 @@
       "lighting_score": 0.15
     },
     "timeline_rules": {
-      "duration": [8.0, 15.0],
-      "section": ["setup", "reveal", "climax"],
-      "effects": ["flash_white", "motion_blur", "hard_cut"]
+      "duration": [
+        8.0,
+        15.0
+      ],
+      "section": [
+        "setup",
+        "reveal",
+        "climax"
+      ],
+      "effects": [
+        "flash_white",
+        "motion_blur",
+        "hard_cut"
+      ]
     },
-    "tool_actions": ["find_setup_clip", "find_reveal_point", "insert_reveal_transition", "place_after_look_clip"],
-    "fallback_rules": ["没有变装动作时用强拍闪白", "没有日常素材时用低动作近景铺垫"],
-    "self_review": ["前后是否有反差", "reveal 是否贴拍", "后段是否比前段更强"]
+    "tool_actions": [
+      "find_setup_clip",
+      "find_reveal_point",
+      "insert_reveal_transition",
+      "place_after_look_clip"
+    ],
+    "fallback_rules": [
+      "没有变装动作时用强拍闪白",
+      "没有日常素材时用低动作近景铺垫"
+    ],
+    "self_review": [
+      "前后是否有反差",
+      "reveal 是否贴拍",
+      "后段是否比前段更强"
+    ]
   },
   {
     "skill_id": "slow_atmosphere_beauty",
     "skill_name": "慢推氛围颜值",
     "type": "shot",
     "goal": "用较长镜头、慢推、柔光和低饱和做安静颜值展示。",
-    "applies_when": ["素材动作少但脸清晰", "音乐较慢", "需要氛围向颜值展示"],
-    "preferred_assets": ["稳定近景", "干净背景", "柔光", "眼神稳定"],
-    "avoid_assets": ["强震动", "高频切", "脸糊", "背景过乱"],
+    "applies_when": [
+      "素材动作少但脸清晰",
+      "音乐较慢",
+      "需要氛围向颜值展示"
+    ],
+    "preferred_assets": [
+      "稳定近景",
+      "干净背景",
+      "柔光",
+      "眼神稳定"
+    ],
+    "avoid_assets": [
+      "强震动",
+      "高频切",
+      "脸糊",
+      "背景过乱"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.3,
       "motion_stability_score": 0.25,
@@ -233,22 +568,172 @@
       "background_clean_score": 0.1
     },
     "timeline_rules": {
-      "clip_duration": [1.2, 2.8],
-      "section": ["beauty_reveal", "bridge", "ending"],
-      "effects": ["slow_zoom_in", "stable_hold", "soft_glow"]
+      "clip_duration": [
+        1.2,
+        2.8
+      ],
+      "section": [
+        "beauty_reveal",
+        "bridge",
+        "ending"
+      ],
+      "effects": [
+        "slow_zoom_in",
+        "stable_hold",
+        "soft_glow"
+      ]
     },
-    "tool_actions": ["select_stable_closeups", "add_slow_zoom", "apply_soft_grade"],
-    "fallback_rules": ["素材较糊时缩短展示时长", "背景杂乱时加暗角"],
-    "self_review": ["节奏是否安静", "脸是否足够清楚", "慢推是否不过度"]
+    "tool_actions": [
+      "select_stable_closeups",
+      "add_slow_zoom",
+      "apply_soft_grade"
+    ],
+    "fallback_rules": [
+      "素材较糊时缩短展示时长",
+      "背景杂乱时加暗角"
+    ],
+    "self_review": [
+      "节奏是否安静",
+      "脸是否足够清楚",
+      "慢推是否不过度"
+    ]
+  },
+  {
+    "skill_id": "monochrome_to_color_beauty_reveal",
+    "skill_name": "黑白到彩色颜值揭晓",
+    "type": "structure",
+    "goal": "用同构图微递进的方式，从偏暗黑白/低饱和氛围逐步过渡到高清彩色人物特写，突出脸部质感和冷艳氛围。",
+    "applies_when": [
+      "参考视频强调人物面部和皮肤质感",
+      "画面从暗、糊、黑白或低饱和逐渐进入清晰彩色",
+      "主体构图稳定，人物始终居中",
+      "剪辑重点是氛围到惊艳的递进，而不是大动作"
+    ],
+    "preferred_assets": [
+      "稳定近景或特写",
+      "人物居中",
+      "脸部清晰",
+      "背景简洁或虚化",
+      "冷色或中性色背景",
+      "可作为结尾记忆点的完整脸部画面"
+    ],
+    "avoid_assets": [
+      "频繁大幅摇镜",
+      "连续全身远景",
+      "复杂文字特效",
+      "高饱和暖黄背景",
+      "夸张磨皮导致五官变平",
+      "背景亮度抢主体"
+    ],
+    "scoring_rules": {
+      "face_clear_score": 0.28,
+      "center_composition_score": 0.22,
+      "skin_texture_score": 0.16,
+      "background_clean_score": 0.12,
+      "motion_stability_score": 0.12,
+      "cool_tone_score": 0.1
+    },
+    "timeline_rules": {
+      "duration": [
+        8.0,
+        15.0
+      ],
+      "sections": [
+        {
+          "name": "atmosphere_setup",
+          "range": [
+            0.0,
+            0.15
+          ],
+          "effects": [
+            "mono_mystery",
+            "soft_blur",
+            "micro_push"
+          ]
+        },
+        {
+          "name": "clarity_reveal",
+          "range": [
+            0.15,
+            0.35
+          ],
+          "effects": [
+            "clarity_rise",
+            "desaturate_to_color",
+            "face_brighten"
+          ]
+        },
+        {
+          "name": "beauty_hold",
+          "range": [
+            0.35,
+            0.75
+          ],
+          "effects": [
+            "cool_white_face_glow",
+            "eye_sharpen",
+            "hair_rim_light",
+            "breathing_zoom"
+          ]
+        },
+        {
+          "name": "memory_freeze",
+          "range": [
+            0.75,
+            1.0
+          ],
+          "effects": [
+            "beauty_freeze",
+            "micro_flash",
+            "soft_glow"
+          ]
+        }
+      ],
+      "frame_relation": "保持构图连续，每段只做亮度、清晰度、饱和度、接近感中的一到两项微增强"
+    },
+    "tool_actions": [
+      "prefer_center_closeups",
+      "build_monochrome_to_color_arc",
+      "use_micro_push_only",
+      "apply_face_quality_grade",
+      "avoid_loud_transitions",
+      "hold_best_final_face_frame"
+    ],
+    "fallback_rules": [
+      "没有黑白参考时用低饱和暗场替代",
+      "背景复杂时压暗背景并轻虚化",
+      "脸部不够近时使用智能裁切靠近人物上半区",
+      "素材运动过大时缩短展示时长并选择稳定帧"
+    ],
+    "self_review": [
+      "人物是否始终居中",
+      "前后帧是否是微递进而非乱跳",
+      "脸部是否比背景更亮更清楚",
+      "肤色是否通透但没有塑料磨皮",
+      "结尾是否停在完整清晰的记忆画面"
+    ]
   },
   {
     "skill_id": "ending_freeze_memory",
     "skill_name": "结尾定格记忆点",
     "type": "structure",
     "goal": "用最清晰的一帧脸或舞台姿态做结尾记忆点。",
-    "applies_when": ["需要收尾", "有高光近脸或动作定点", "音乐结尾有落点"],
-    "preferred_assets": ["正脸", "侧脸", "高光动作", "眼神对镜头"],
-    "avoid_assets": ["闭眼失误", "运动糊帧", "表情崩帧"],
+    "applies_when": [
+      "需要收尾",
+      "有高光近脸或动作定点",
+      "音乐结尾有落点"
+    ],
+    "preferred_assets": [
+      "正脸",
+      "侧脸",
+      "高光动作",
+      "眼神对镜头"
+    ],
+    "avoid_assets": [
+      "闭眼失误",
+      "运动糊帧",
+      "表情崩帧"
+    ],
     "scoring_rules": {
       "face_clear_score": 0.35,
       "composition_score": 0.25,
@@ -257,22 +742,256 @@
       "lighting_score": 0.1
     },
     "timeline_rules": {
-      "duration": [0.5, 1.2],
-      "section": ["ending"],
-      "effects": ["freeze_frame", "soft_glow", "slight_zoom", "fade_out"]
+      "duration": [
+        0.5,
+        1.2
+      ],
+      "section": [
+        "ending"
+      ],
+      "effects": [
+        "freeze_frame",
+        "soft_glow",
+        "slight_zoom",
+        "fade_out"
+      ]
     },
-    "tool_actions": ["select_best_final_frame", "add_freeze_frame", "add_fade_out"],
-    "fallback_rules": ["没有近脸时用最佳半身姿态", "结尾音乐弱时用淡出"],
-    "self_review": ["最后一帧是否好看", "是否有收束感", "是否没有糊脸"]
+    "tool_actions": [
+      "select_best_final_frame",
+      "add_freeze_frame",
+      "add_fade_out"
+    ],
+    "fallback_rules": [
+      "没有近脸时用最佳半身姿态",
+      "结尾音乐弱时用淡出"
+    ],
+    "self_review": [
+      "最后一帧是否好看",
+      "是否有收束感",
+      "是否没有糊脸"
+    ]
+  },
+  {
+    "skill_id": "progressive_idol_beauty_arc",
+    "skill_name": "递进式颜值复刻结构",
+    "type": "structure",
+    "goal": "把具体参考视频抽象为：人物建立、动作加速、反差桥接、颜值核心、表现高潮、记忆收尾的通用剪辑结构。",
+    "applies_when": [
+      "参考视频有从克制到爆发的递进",
+      "素材包含清晰人物、动作定点或造型反差",
+      "需要复刻剪辑逻辑而非复刻某一种颜色或具体眼神"
+    ],
+    "preferred_assets": [
+      "高价值脸部或上半身镜头",
+      "清晰半身动作镜头",
+      "抬手、转头、起身、低头抬头等动作峰值",
+      "造型、灯光、背景或场景反差镜头",
+      "多人或舞台中主角视觉突出的镜头",
+      "稳定的结尾记忆帧"
+    ],
+    "avoid_assets": [
+      "开头直接过度爆发",
+      "连续弱动作",
+      "主角不明确的多人镜头",
+      "脸部长期模糊",
+      "桥接转场拖得过长"
+    ],
+    "scoring_rules": {
+      "face_or_subject_value_score": 0.24,
+      "face_clear_score": 0.2,
+      "action_peak_score": 0.18,
+      "contrast_upgrade_score": 0.16,
+      "lead_subject_score": 0.12,
+      "beat_match_score": 0.1
+    },
+    "timeline_rules": {
+      "duration": [
+        15.0,
+        20.0
+      ],
+      "sections": [
+        {
+          "name": "identity_setup",
+          "duration": [
+            2.0,
+            4.0
+          ],
+          "effects": [
+            "slow_zoom_in",
+            "hard_cut"
+          ]
+        },
+        {
+          "name": "action_accelerate",
+          "duration": [
+            2.0,
+            3.0
+          ],
+          "effects": [
+            "snap_zoom",
+            "motion_blur",
+            "flash_white"
+          ]
+        },
+        {
+          "name": "contrast_bridge",
+          "duration": [
+            0.1,
+            0.3
+          ],
+          "effects": [
+            "motion_blur",
+            "flash_black",
+            "whip_flash"
+          ]
+        },
+        {
+          "name": "beauty_core",
+          "duration": [
+            2.0,
+            5.0
+          ],
+          "effects": [
+            "soft_glow",
+            "slow_zoom_in",
+            "freeze_frame"
+          ]
+        },
+        {
+          "name": "performance_climax",
+          "duration": [
+            2.0,
+            4.0
+          ],
+          "effects": [
+            "zoom_punch",
+            "beat_shake",
+            "contrast_grade"
+          ]
+        },
+        {
+          "name": "ending_memory",
+          "duration": [
+            0.5,
+            1.5
+          ],
+          "effects": [
+            "slow_zoom_in",
+            "freeze_frame",
+            "fade_out"
+          ]
+        }
+      ]
+    },
+    "tool_actions": [
+      "build_progressive_structure",
+      "prioritize_high_value_subject_frames",
+      "insert_short_contrast_bridge",
+      "reuse_best_memory_point_with_variation",
+      "keep_lead_subject_visually_dominant"
+    ],
+    "fallback_rules": [
+      "没有明显颜色反差时用场景、造型、景别或节奏反差替代",
+      "没有多人舞台时用半身动作高潮替代",
+      "没有清晰脸部时缩短颜值核心段并强化主体轮廓"
+    ],
+    "self_review": [
+      "是否形成先建立再加速再爆发的递进",
+      "桥接是否短且有冲击",
+      "颜值核心是否集中展示高价值主体",
+      "高潮是否仍保留主体记忆点",
+      "结尾是否停在最稳定的记忆画面"
+    ]
+  },
+  {
+    "skill_id": "contrast_special_two_video",
+    "skill_name": "Contrast Special Two-video Edit",
+    "type": "structure",
+    "goal": "Use two original video families as a deliberate contrast edit: first family builds baseline/setup, second family delivers reveal/highlight.",
+    "applies_when": [
+      "two uploaded videos have different styling, mood, period, scene, energy, outfit, or visual quality",
+      "user asks for contrast, before-after, soft-to-impact, daily-to-stage, or two-video stitching",
+      "timeline quality reports missing source family or one source family dominance"
+    ],
+    "preferred_assets": [
+      "family A: stable setup shots, softer energy, readable face or body context",
+      "family B: stronger highlight shots, clearer closeups, higher energy, stronger styling or scene change",
+      "bridge: one short high-motion or flash-capable clip near the contrast turn"
+    ],
+    "avoid_assets": [
+      "using only one original video family",
+      "long setup before the contrast turn",
+      "repeating the same bridge transition more than twice",
+      "slow motion in the first three seconds"
+    ],
+    "timeline_rules": {
+      "section": [
+        "setup_a",
+        "contrast_bridge",
+        "reveal_b",
+        "memory_lock"
+      ],
+      "source_family_policy": {
+        "setup_a": "first or lower-score family",
+        "reveal_b": "second or higher-score family",
+        "max_family_share": 0.62,
+        "required_family_count": 2
+      },
+      "effects": [
+        "slow_zoom_in",
+        "soft_glow",
+        "zoom_punch",
+        "snap_zoom",
+        "spin_blur",
+        "slow_motion_glow"
+      ],
+      "transitions": [
+        "soft_wash",
+        "zoom_burst",
+        "spin_blur",
+        "whip_flash",
+        "glow_flash"
+      ]
+    },
+    "tool_actions": [
+      "group_clips_by_original_video_family",
+      "assign_setup_family_and_reveal_family",
+      "insert_zoom_or_spin_contrast_bridge",
+      "verify_source_family_usage",
+      "penalize_single_family_dominance"
+    ],
+    "fallback_rules": [
+      "if only one source family exists, fall back to progressive beauty or beat template",
+      "if family B lacks closeups, use half-body highlights and shorten memory lock",
+      "if source contrast is weak, create contrast through speed, color grade, and transition intensity"
+    ],
+    "self_review": [
+      "does the timeline visibly use both original video families",
+      "does the contrast turn happen before the midpoint",
+      "does B-side reveal feel stronger than A-side setup",
+      "does the final memory shot come from the reveal family"
+    ]
   },
   {
     "skill_id": "weak_material_rescue",
     "skill_name": "弱素材救片策略",
     "type": "adaptive",
     "goal": "当用户素材不完整时，用低风险剪辑方式尽量生成可用成片。",
-    "applies_when": ["缺少舞台", "缺少近脸", "素材模糊", "动作较少"],
-    "preferred_assets": ["相对清晰的帧", "可做截图的片段", "低动作稳定片段"],
-    "avoid_assets": ["长时间糊脸展示", "强行套高能模板"],
+    "applies_when": [
+      "缺少舞台",
+      "缺少近脸",
+      "素材模糊",
+      "动作较少"
+    ],
+    "preferred_assets": [
+      "相对清晰的帧",
+      "可做截图的片段",
+      "低动作稳定片段"
+    ],
+    "avoid_assets": [
+      "长时间糊脸展示",
+      "强行套高能模板"
+    ],
     "scoring_rules": {
       "usable_frame_score": 0.35,
       "motion_stability_score": 0.2,
@@ -281,11 +1000,29 @@
       "beat_match_score": 0.1
     },
     "timeline_rules": {
-      "section": ["fallback"],
-      "effects": ["collage_intro", "short_display", "slow_zoom", "freeze_frame"]
+      "section": [
+        "fallback"
+      ],
+      "effects": [
+        "collage_intro",
+        "short_display",
+        "slow_zoom",
+        "freeze_frame"
+      ]
     },
-    "tool_actions": ["lower_template_density", "use_collage_or_stills", "shorten_blurry_clips"],
-    "fallback_rules": ["没有舞台时用近脸慢推", "没有近脸时改成氛围/动作剪辑", "没有变装时用弱 reveal"],
-    "self_review": ["是否避免长时间展示缺陷", "是否选择了更适合的低风险风格"]
+    "tool_actions": [
+      "lower_template_density",
+      "use_collage_or_stills",
+      "shorten_blurry_clips"
+    ],
+    "fallback_rules": [
+      "没有舞台时用近脸慢推",
+      "没有近脸时改成氛围/动作剪辑",
+      "没有变装时用弱 reveal"
+    ],
+    "self_review": [
+      "是否避免长时间展示缺陷",
+      "是否选择了更适合的低风险风格"
+    ]
   }
 ]

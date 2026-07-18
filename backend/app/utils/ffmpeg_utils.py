@@ -19,8 +19,11 @@ def require_ffmpeg() -> str:
     return ffmpeg_binary()
 
 
-def run_ffmpeg(args: list[str]) -> None:
-    proc = subprocess.run([require_ffmpeg(), "-y", *args], capture_output=True, text=True)
+def run_ffmpeg(args: list[str], timeout: int | None = None) -> None:
+    try:
+        proc = subprocess.run([require_ffmpeg(), "-y", *args], capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired as exc:
+        raise RuntimeError(f"FFmpeg timed out after {timeout}s") from exc
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr[-3000:] or "FFmpeg failed")
 
